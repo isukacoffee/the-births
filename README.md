@@ -67,6 +67,37 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 
+## birthdays テーブル
+
+| Column                | Type        | Options     |
+| ------------------    | ------      | ----------- |
+| date                  | date        | null: false |
+| user                  | references  | null: false, foreign_key: true |
+| celebrate_person_name | string      | null: false |
+
+## pictures テーブル
+
+| Column                | Type        | Options     |
+| ------------------    | ------      | ----------- |
+| title                 | string      | null: false |
+| birthday              | references  | null: false, foreign_key: true |
+
+## color_papers テーブル
+
+| Column                | Type        | Options     |
+| ------------------    | ------      | ----------- |
+| birthday              | references  | null: false, foreign_key: true |
+| picture               | references  | null: false, foreign_key: true |
+
+## comments テーブル
+
+| Column                | Type        | Options     |
+| ------------------    | ------      | ----------- |
+| user                  | references  | null: false, foreign_key: true |
+| birthday              | references  | null: false, foreign_key: true |
+| sentence              | string      | null: false |
+
+
 
 
 
