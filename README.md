@@ -67,6 +67,13 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 
+### Association
+
+- has_many :birthdays
+- has_many :pictures
+- has_many :color_papers
+- has_many :comments
+
 ## birthdays テーブル
 
 | Column                | Type        | Options     |
@@ -75,12 +82,28 @@
 | user                  | references  | null: false, foreign_key: true |
 | celebrate_person_name | string      | null: false |
 
+### Association
+
+- belongs_to :user
+- has_many :pictures
+- has_many :color_papers
+- has_many :comments
+
+
 ## pictures テーブル
 
 | Column                | Type        | Options     |
 | ------------------    | ------      | ----------- |
 | title                 | string      | null: false |
 | birthday              | references  | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :birthday
+- has_many :color_papers
+- has_many :comments
+
 
 ## color_papers テーブル
 
@@ -89,6 +112,14 @@
 | birthday              | references  | null: false, foreign_key: true |
 | picture               | references  | null: false, foreign_key: true |
 
+### Association
+
+- belongs_to :user
+- belongs_to :birthday
+- belongs_to :picture
+- has_many :comments
+
+
 ## comments テーブル
 
 | Column                | Type        | Options     |
@@ -96,6 +127,17 @@
 | user                  | references  | null: false, foreign_key: true |
 | birthday              | references  | null: false, foreign_key: true |
 | sentence              | string      | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :birthday
+- belongs_to :picture
+- belongs_to :color_paper
+
+
+
+
 
 
 
