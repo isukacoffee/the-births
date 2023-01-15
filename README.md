@@ -96,13 +96,13 @@
 | ------------------    | ------      | ----------- |
 | title                 | string      | null: false |
 | birthday              | references  | null: false, foreign_key: true |
+| user                  | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :birthday
-- has_many :color_papers
-- has_many :comments
+- belongs_to :color_paper
 
 
 ## color_papers テーブル
@@ -111,12 +111,13 @@
 | ------------------    | ------      | ----------- |
 | birthday              | references  | null: false, foreign_key: true |
 | picture               | references  | null: false, foreign_key: true |
+| user                  | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :birthday
-- belongs_to :picture
+- has_many :pictures
 - has_many :comments
 
 
@@ -132,7 +133,6 @@
 
 - belongs_to :user
 - belongs_to :birthday
-- belongs_to :picture
 - belongs_to :color_paper
 
 
