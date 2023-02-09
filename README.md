@@ -64,7 +64,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| nickname_kana           | string | null: false |
+| nickname_kana      | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 
@@ -108,11 +108,13 @@
 
 ## color_papers テーブル
 
-| Column                | Type        | Options     |
-| ------------------    | ------      | ----------- |
-| birthday              | references  | null: false, foreign_key: true |
-| picture               | references  | null: false, foreign_key: true |
-| user                  | references  | null: false, foreign_key: true |
+| Column                   | Type        | Options     |
+| ------------------       | ------      | ----------- |
+| birthday                 | references  | null: false, foreign_key: true |
+| picture                  | references  | null: false, foreign_key: true |
+| user                     | references  | null: false, foreign_key: true |
+| question_management_id   | integer     | null: false |
+| question_answer          | integer     | null: false |
 
 ### Association
 
