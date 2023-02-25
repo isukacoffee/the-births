@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'birthday/index'
+  root to :'birthday/index'
   devise_for :users
 end
