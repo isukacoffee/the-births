@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_25_095545) do
+ActiveRecord::Schema.define(version: 2023_02_26_115723) do
 
   create_table "birthdays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2023_02_25_095545) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_birthdays_on_user_id"
+  end
+
+  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "user_id", null: false
+    t.bigint "birthday_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["birthday_id"], name: "index_pictures_on_birthday_id"
+    t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -36,4 +46,6 @@ ActiveRecord::Schema.define(version: 2023_02_25_095545) do
   end
 
   add_foreign_key "birthdays", "users"
+  add_foreign_key "pictures", "birthdays"
+  add_foreign_key "pictures", "users"
 end
