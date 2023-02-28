@@ -1,2 +1,17 @@
-<h1>Birthday#index</h1>
-<p>Find me in app/views/birthday/index.html.erb</p>
+<h1>☆思い出に残る人を登録してください☆</h1>
+
+<%= form_with model: Birthday, local: true do |f|%>
+  <div class="field">
+    <%= f.label :borrowed_on, "日付" %><br />
+    <%= f.date_field :borrowed_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title, "ニックネーム" %><br />
+    <%= f.text_area :title %>
+  </div>
+
+   <div class="actions">
+    <%= f.submit "登録する", class: :form__btn  %>
+  </div>
+<% end %>
