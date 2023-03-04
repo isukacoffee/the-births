@@ -1,5 +1,7 @@
 class BirthdaysController < ApplicationController
   def index
+    @birthday = Birthday.find(1)
+
   end
 
   def new
@@ -15,10 +17,15 @@ class BirthdaysController < ApplicationController
     end
   end
 
+  def show
+    @birthday = Birthday.find(params[:id])
+  end
+
+
   private
 
   def birthday_params
-    params.require(:birthday).permit(:date, :user_id, :celebrate_person_name).merge(user_id: current_user.id)
+    params.require(:birthday).permit(:date, :celebrate_person_name).merge(user_id: current_user.id)
   end
   
 end
