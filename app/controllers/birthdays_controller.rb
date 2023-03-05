@@ -1,6 +1,6 @@
 class BirthdaysController < ApplicationController
   def index
-    @birthday = Birthday.find(1)
+    @birthday = Birthday.find(params[:id])
 
   end
 
