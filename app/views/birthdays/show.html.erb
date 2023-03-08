@@ -1,1 +1,4 @@
- <%=link_to '誕生日の詳細', birthday_path(@birthday.id), method: :get %>
+
+
+ <%= (@birthday.celebrate_person_name) %>
+ <%= @birthday.user.nickname %>
