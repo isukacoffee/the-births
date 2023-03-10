@@ -1,6 +1,6 @@
  <%=link_to "新規誕生日の登録はこちら", new_birthday_path %>
 
 
- <% @birthday.each do |birthday| %>
+ <% @birthdays.each do |birthday| %>
  <%=link_to '誕生日の詳細情報はこちら', birthday_path(birthday.id), method: :get %>
  <% end %>
