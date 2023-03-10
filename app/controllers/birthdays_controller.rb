@@ -21,6 +21,7 @@ class BirthdaysController < ApplicationController
   end
 
 
+
   private
 
   def birthday_params
