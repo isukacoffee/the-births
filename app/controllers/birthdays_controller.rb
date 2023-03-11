@@ -1,6 +1,6 @@
 class BirthdaysController < ApplicationController
   def index
-    @birthday = Birthday.includes(:user)
+    @birthdays = Birthday.includes(:user)
   end
 
   def new
@@ -19,6 +19,14 @@ class BirthdaysController < ApplicationController
   def show
     @birthday = Birthday.find(params[:id])
   end
+
+  def edit
+    @birthday = Birthday.find(params[:id])
+    unless @birthday.user == current_user
+      redirect_to birthday_path(@birthday.id)
+    end
+  end
+
 
 
 

@@ -2,3 +2,5 @@
 
  <%= (@birthday.celebrate_person_name) %>
  <%= @birthday.user.nickname %>
+
+  <%=link_to '誕生日の編集画面はこちら', edit_birthday_path(@birthday.id) %>
