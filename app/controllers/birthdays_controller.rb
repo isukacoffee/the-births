@@ -27,6 +27,15 @@ class BirthdaysController < ApplicationController
     end
   end
 
+  def update
+    @birthday = Birthday.find(params[:id])
+    if @birthday.update(birthday_params)
+      redirect_to birthday_path(@birthday.id)
+   else
+     render :edit
+   end
+  end
+
 
 
 
