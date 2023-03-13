@@ -32,7 +32,8 @@ class BirthdaysController < ApplicationController
     if @birthday.update(birthday_params)
       redirect_to birthday_path(@birthday.id)
    else
-     render :edit
+     binding.pry
+     render :show
    end
   end
 

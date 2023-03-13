@@ -1,6 +1,9 @@
 <h1>&#x1F389;思い出に残す人を編集してください&#x1F389;</h1>
 
-<%= form_with model: Birthday, local: true do |f|%>
+<%= form_with model: @Birthday, local: true do |f|%>
+
+<%# <%= render 'shared/error_messages', model: f.object %>  
+
   <div class="field">
     <%= f.label :date, "日付" %><br />
     <%= f.date_field :date %>
@@ -15,3 +18,4 @@
     <%= f.submit "編集する", class: :form__btn  %>
   </div>
 <% end %>
+
