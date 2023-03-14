@@ -23,18 +23,18 @@ class BirthdaysController < ApplicationController
   def edit
     @birthday = Birthday.find(params[:id])
     unless @birthday.user == current_user
-      redirect_to birthday_path(@birthday.id)
+      redirect_to birthdays_path(@birthday.id)
     end
   end
 
   def update
     @birthday = Birthday.find(params[:id])
     if @birthday.update(birthday_params)
-      redirect_to birthday_path(@birthday.id)
-   else
-     binding.pry
-     render :show
-   end
+      redirect_to birthday_path
+    else
+        #updateを失敗すると編集ページへ
+      render :edit
+    end
   end
 
 

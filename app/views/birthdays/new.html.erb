@@ -1,9 +1,9 @@
 <h1>&#x1F389;思い出に残す人を登録してください&#x1F389;</h1>
 
-<%= form_with model: Birthday, local: true do |f|%>
+<%= form_with model: @Birthday, local: true do |f|%>
   <div class="field">
     <%= f.label :date, "日付" %><br />
-    <%= f.date_field :date %>
+    <%= f.datetime_field :date %>
   </div>
 
   <div class="field">
