@@ -113,6 +113,8 @@
 | birthday              | references  | null: false, foreign_key: true |
 | picture               | references  | null: false, foreign_key: true |
 | user                  | references  | null: false, foreign_key: true |
+| question              | integer     | null: false |
+| question_answer       | string      | null: false |
 
 ### Association
 

@@ -1,0 +1,2 @@
+class ColorPaper < ApplicationRecord
+end

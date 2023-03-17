@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_26_115723) do
+ActiveRecord::Schema.define(version: 2023_03_16_225123) do
 
   create_table "birthdays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date", null: false
@@ -19,6 +19,29 @@ ActiveRecord::Schema.define(version: 2023_02_26_115723) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_birthdays_on_user_id"
+  end
+
+  create_table "color_papers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "picture_id", null: false
+    t.bigint "birthday_id", null: false
+    t.integer "question", null: false
+    t.string "question_answer", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["birthday_id"], name: "index_color_papers_on_birthday_id"
+    t.index ["picture_id"], name: "index_color_papers_on_picture_id"
+    t.index ["user_id"], name: "index_color_papers_on_user_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "birthday_id", null: false
+    t.string "sentence", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["birthday_id"], name: "index_comments_on_birthday_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,6 +69,11 @@ ActiveRecord::Schema.define(version: 2023_02_26_115723) do
   end
 
   add_foreign_key "birthdays", "users"
+  add_foreign_key "color_papers", "birthdays"
+  add_foreign_key "color_papers", "pictures"
+  add_foreign_key "color_papers", "users"
+  add_foreign_key "comments", "birthdays"
+  add_foreign_key "comments", "users"
   add_foreign_key "pictures", "birthdays"
   add_foreign_key "pictures", "users"
 end
