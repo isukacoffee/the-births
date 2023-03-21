@@ -1,6 +1,6 @@
 <h1>&#x1F389;思い出に残す人を編集してください&#x1F389;</h1>
 
-<%= form_with model: @birthday,local: true do |f|%>
+<%= form_with model: @birthday,local: true do |f|%> %>
  <%# <%= render 'shared/error_messages', model: f.object %>  
     <%= f.date_field :date %><br />
     <%= f.text_area :celebrate_person_name %><br />
