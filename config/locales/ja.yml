@@ -1,0 +1,7 @@
+ja:
+  enums:              #enum型に対する日本語定義であることを明示するために記述
+    color_paper:           #モデル名を指定
+      question:           #カラム名を指定
+        food: 好きな食べ物は?     #Enumの名前定義①
+        animal: 好きな動物は?   #Enumの名前定義②
+        color: 好きな色は?      #Enumの名前定義③
