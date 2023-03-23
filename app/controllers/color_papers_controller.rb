@@ -1,0 +1,2 @@
+class ColorPapersController < ApplicationController
+end
