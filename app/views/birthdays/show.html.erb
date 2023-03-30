@@ -4,4 +4,4 @@
  <%= @birthday.user.nickname %>
 
   <%=link_to '誕生日の編集画面はこちら', edit_birthday_path(@birthday.id) %>
-  <%=link_to 'この方の色紙編集画面はこちら', edit_color_paper_path(@birthday.id) %>
+  <%=link_to 'この方の色紙編集画面はこちら', color_papers_path(@birthday.id) %>

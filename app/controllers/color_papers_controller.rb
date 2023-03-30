@@ -1,8 +1,8 @@
 class ColorPapersController < ApplicationController
 
-  def index
-    @color_paper = Color_paper.all
-  end
+  # def index
+  #   @color_paper = Color_paper.all
+  # end
 
   def create
     @color_paper = Color_paper.new
@@ -10,6 +10,7 @@ class ColorPapersController < ApplicationController
 
   def edit
     @color_paper = Color_paper.find(params[:id])
+    unless @birthday.user == current_user
   end
 
   def update
