@@ -1,11 +1,11 @@
 class ColorPapersController < ApplicationController
 
   # def index
-  #   @color_paper = Color_paper.all
+  #   @color_paper = ColorPaper.all
   # end
 
   def create
-    @color_paper = Color_paper.new
+    @color_paper = ColorPaper.new(color_paper_params)
     if @color_paper.save
       redirect_to root_path
     else
@@ -14,7 +14,7 @@ class ColorPapersController < ApplicationController
   end
 
   def edit
-    @color_paper = Color_paper.find(params[:id])
+    @color_paper = ColorPaper.find(params[:id])
     unless @birthday.user == current_user
     end
   end
@@ -25,7 +25,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.require(:color_paper).permit(:question, :question_answer, :image).merge(user_id :current_user.id :birthday_id)
+    params.permit(:question, :question_answer, :image).merge(user_id: current_user.id, birthday_id)
   end
 end
 
