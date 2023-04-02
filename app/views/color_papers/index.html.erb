@@ -1,4 +1,4 @@
-<%= form_with model: @color_papers, local: true do |f|%>
+<%= form_with model: @color_paper, local: true do |f|%>
 
   <div class="field">
     <%= f.label :comment, "感謝の言葉を贈ってください" %><br />
@@ -8,6 +8,7 @@
   <div class="field">
     <%= f.label :image, "記念すべき１枚を選んで下さい" %><br />
     <%= f.file_field :image %>
+    <%= image_tag @color_paper.images.url.variant(resize: '500x500') if @color_paper.image.attached?%>
   </div>
 
   <div class="actions">

@@ -1,8 +1,8 @@
 class ColorPapersController < ApplicationController
 
-  # def index
-  #   @color_paper = ColorPaper.all
-  # end
+  def index
+    @color_paper = ColorPaper.all
+  end
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
@@ -25,7 +25,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.permit(:question, :question_answer, :comment).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
+    params.permit(:question, :question_answer, :image).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
   end
 end
 
