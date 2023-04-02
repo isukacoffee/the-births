@@ -25,7 +25,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.permit(:question, :question_answer).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
+    params.permit(:question, :question_answer, :comment).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
   end
 end
 
