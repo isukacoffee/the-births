@@ -4,12 +4,16 @@ class ColorPapersController < ApplicationController
     @color_paper = ColorPaper.all
   end
 
+  def new
+    @color_paper = ColorPaper.new
+  end
+
   def create
     @color_paper = ColorPaper.new(color_paper_params)
     if @color_paper.save
       redirect_to root_path
     else
-      render :index
+      render :new
     end
   end
 

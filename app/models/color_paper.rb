@@ -1,7 +1,7 @@
 class ColorPaper < ApplicationRecord
   enum question:    {food: 0, animal: 1, color: 2}
 
-  validates :image, presence: true
+  validates :image, presence: true, unless: :was_attached?
   validates :question, presence: true
   validates :question_answer, presence: true
 
