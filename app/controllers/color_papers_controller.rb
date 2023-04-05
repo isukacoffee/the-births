@@ -11,15 +11,24 @@ class ColorPapersController < ApplicationController
   def create
     @color_paper = ColorPaper.new(color_paper_params)
     if @color_paper.save
+    @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
     else
       render :new
     end
   end
 
+  def show
+    @color_paper = ColorPaper.find(params[:id])
+  end
+
   def edit
     @color_paper = ColorPaper.find(params[:id])
-    unless @birthday.user == current_user
+    unless @color_paper.user == current_user
+      redirect_to _path
+    else
+        #updateを失敗すると編集ページへ
+      render :edit
     end
   end
 
@@ -29,7 +38,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.permit(:question, :question_answer, :image).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
+    params.require(:color_paper).permit(:question, :question_answer, :image).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
   end
 end
 

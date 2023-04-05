@@ -8,7 +8,6 @@
   <div class="field">
     <%= f.label :image, "記念すべき１枚を選んで下さい" %><br />
     <%= f.file_field :image %>
-    <%= image_tag @color_paper.image.variant(resize: '500x500') if @color_paper.image.attached?%>
   </div>
 
   <div class="actions">

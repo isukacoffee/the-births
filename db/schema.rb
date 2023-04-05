@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_03_27_105934) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "birthday_id", null: false
+    t.bigint "birthday_id", null: false #todoこれ消す
     t.string "sentence", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2023_03_27_105934) do
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "user_id", null: false
-    t.bigint "birthday_id", null: false
+    t.bigint "birthday_id", null: false #todoこれ消す
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "color_paper_id", null: false
