@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_27_105934) do
+ActiveRecord::Schema.define(version: 2023_04_07_012800) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,22 +55,18 @@ ActiveRecord::Schema.define(version: 2023_03_27_105934) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "birthday_id", null: false #todoこれ消す
     t.string "sentence", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["birthday_id"], name: "index_comments_on_birthday_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "user_id", null: false
-    t.bigint "birthday_id", null: false #todoこれ消す
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "color_paper_id", null: false
-    t.index ["birthday_id"], name: "index_pictures_on_birthday_id"
     t.index ["color_paper_id"], name: "index_pictures_on_color_paper_id"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end
@@ -93,9 +89,7 @@ ActiveRecord::Schema.define(version: 2023_03_27_105934) do
   add_foreign_key "birthdays", "users"
   add_foreign_key "color_papers", "birthdays"
   add_foreign_key "color_papers", "users"
-  add_foreign_key "comments", "birthdays"
   add_foreign_key "comments", "users"
-  add_foreign_key "pictures", "birthdays"
   add_foreign_key "pictures", "color_papers"
   add_foreign_key "pictures", "users"
 end
