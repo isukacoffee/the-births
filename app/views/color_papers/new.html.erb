@@ -1,4 +1,5 @@
 <%= form_with model: @color_paper, local: true do |f|%>
+  <p><%= params[:birthday_id] %></p>
 
   <div class="field">
     <%= f.label :image, "記念すべき１枚を選んで下さい" %><br />
@@ -9,4 +10,5 @@
   <div class="actions">
     <%= f.submit "投稿する", class: :form__btn  %>
   </div>
+
 <% end %>
