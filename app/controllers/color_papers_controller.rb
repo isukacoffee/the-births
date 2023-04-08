@@ -10,6 +10,7 @@ class ColorPapersController < ApplicationController
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
+    @color_paper = Birthday.find(params[:id])
     if @color_paper.save
     @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
