@@ -45,5 +45,4 @@ class BirthdaysController < ApplicationController
   def birthday_params
     params.require(:birthday).permit(:date, :celebrate_person_name).merge(user_id: current_user.id)
   end
-  
 end

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_26_115723) do
+ActiveRecord::Schema.define(version: 2023_04_07_012800) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "birthdays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date", null: false
@@ -21,13 +42,32 @@ ActiveRecord::Schema.define(version: 2023_02_26_115723) do
     t.index ["user_id"], name: "index_birthdays_on_user_id"
   end
 
+  create_table "color_papers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "birthday_id", null: false
+    t.integer "question", null: false
+    t.string "question_answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["birthday_id"], name: "index_color_papers_on_birthday_id"
+    t.index ["user_id"], name: "index_color_papers_on_user_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "sentence", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "user_id", null: false
-    t.bigint "birthday_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["birthday_id"], name: "index_pictures_on_birthday_id"
+    t.bigint "color_paper_id", null: false
+    t.index ["color_paper_id"], name: "index_pictures_on_color_paper_id"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
@@ -45,7 +85,11 @@ ActiveRecord::Schema.define(version: 2023_02_26_115723) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "birthdays", "users"
-  add_foreign_key "pictures", "birthdays"
+  add_foreign_key "color_papers", "birthdays"
+  add_foreign_key "color_papers", "users"
+  add_foreign_key "comments", "users"
+  add_foreign_key "pictures", "color_papers"
   add_foreign_key "pictures", "users"
 end
