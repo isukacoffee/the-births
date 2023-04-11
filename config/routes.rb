@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :birthdays, only: [:index, :new, :create, :show, :edit, :update]
   resources :color_papers, only: [:index, :new, :create, :show, :edit, :update]
   resources :comments, only: [:index, :new, :create]
+  resources :color_papers
  end
