@@ -4,10 +4,12 @@
   <%= @birthday.user.nickname %>
 
   <%=link_to '誕生日の編集画面はこちら', edit_birthday_path(@birthday.id) %>
-  <%=link_to 'この方の色紙編集画面はこちら', new_color_paper_path(@birthday_id) %>
 
 
-  <%= form_with model: @color_paper, local: true do |f|%>
+  <%=link_to 'この方の色紙編集画面はこちら', new_color_paper_path(birthday_id: @birthday.id) %>
+
+
+<%= form_with model: @color_paper, local: true do |f|%>
 
   <div class="field">
     <%= f.label :comment, "感謝の言葉を贈ってください" %><br />

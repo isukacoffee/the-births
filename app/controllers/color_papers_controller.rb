@@ -6,11 +6,11 @@ class ColorPapersController < ApplicationController
 
   def new
     @color_paper = ColorPaper.new
+    @birthday_id = params[:birthday_id]
   end
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
-    @color_paper = Birthday.find(color_paper_params)
     if @color_paper.save
     @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
@@ -21,6 +21,7 @@ class ColorPapersController < ApplicationController
 
   def show
     @color_paper = ColorPaper.find(params[:id])
+    @color_paper = Birthday.find(params[:id])
   end
 
   def edit
