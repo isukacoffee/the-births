@@ -10,10 +10,7 @@ class ColorPapersController < ApplicationController
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
-    @color_paper = ColorPaper.find(params[:birthday_id])
-    
-    binding.pry
-    
+    @color_paper = Birthday.find(color_paper_params)
     if @color_paper.save
     @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
@@ -24,7 +21,6 @@ class ColorPapersController < ApplicationController
 
   def show
     @color_paper = ColorPaper.find(params[:id])
-    # @color_paper = ColorPaper.find(:color_paper params[:birthday_id])
   end
 
   def edit
@@ -43,7 +39,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.require(:color_paper).permit(:image).merge(user_id: current_user.id)
+    params.require(:color_paper).permit(:image).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
   end
 end
 
