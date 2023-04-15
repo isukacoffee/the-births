@@ -5,7 +5,8 @@
     <%= f.file_field :image %>
     <%= image_tag @color_paper.image.variant(resize: '500x500') if @color_paper.image.attached?%>
   </div>
-  <%= f.hidden_field :birthday_id, :value => @birthday_id %> 
+  <%# ここでパラメーターにbirthday_idを付与 %>
+  <%= f.hidden_field :birthday_id, :value => @birthday_id %>
   <div class="actions">
     <%= f.submit "投稿する", class: :form__btn  %>
   </div>
