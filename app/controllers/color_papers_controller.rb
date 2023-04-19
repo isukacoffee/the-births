@@ -1,7 +1,7 @@
 class ColorPapersController < ApplicationController
 
   def index
-    @color_paper = ColorPaper.all
+    @color_papers = ColorPaper.all
   end
 
   def new
@@ -12,7 +12,8 @@ class ColorPapersController < ApplicationController
   def create
     @color_paper = ColorPaper.new(color_paper_params)
     #color_paperにbirthday_idを代入する方法
-    @color_paper = params[:color_paper][:birthday_id] 
+    @color_paper = ColorPaper.new(params[:color_paper][:birthday_id])
+    # @color_paper = params[:color_paper][:birthday_id] 
     if @color_paper.save
     @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
@@ -42,7 +43,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.require(:color_paper).permit(:image).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
+    params.require(:color_paper).permit(:image, :birthday_id).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
   end
 end
 
