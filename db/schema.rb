@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_04_07_012800) do
   create_table "color_papers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "birthday_id", null: false
-    t.integer "question", null: false
+    t.integer "question", null: false#デフォルト値０マイグレーションファイルで作成デフォルト値０
     t.string "question_answer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

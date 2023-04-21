@@ -11,9 +11,9 @@ class ColorPapersController < ApplicationController
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
-    #color_paperにbirthday_idを代入する方法
-    @color_paper = ColorPaper.new(params[:color_paper][:birthday_id])
-    # @color_paper = params[:color_paper][:birthday_id] 
+    #
+    @color_paper.birthday_id = params[:color_paper][:birthday_id]
+    
     if @color_paper.save
     @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
       redirect_to root_path
