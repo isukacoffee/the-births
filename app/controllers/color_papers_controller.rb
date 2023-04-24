@@ -11,7 +11,7 @@ class ColorPapersController < ApplicationController
 
   def create
     @color_paper = ColorPaper.new(color_paper_params)
-    #
+    #ここでcolor_paperレコードにbirthday_idを代入している
     @color_paper.birthday_id = params[:color_paper][:birthday_id]
     
     if @color_paper.save

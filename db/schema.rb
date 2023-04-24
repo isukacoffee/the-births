@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_07_012800) do
+ActiveRecord::Schema.define(version: 2023_04_24_174137) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_04_07_012800) do
   create_table "color_papers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "birthday_id", null: false
-    t.integer "question", null: false#デフォルト値０マイグレーションファイルで作成デフォルト値０
+    t.integer "question", default: 0, null: false
     t.string "question_answer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
