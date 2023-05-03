@@ -2,5 +2,5 @@
 
 
 <% @birthdays.each do |birthday| %>
-  <%=link_to '誕生日の詳細情報はこちら', birthday_path(birthday.id), method: :get %>
+  <%=link_to '誕生日の詳細情報はこちら', birthdays_path(birthday.id), method: :get %>
 <% end %>
