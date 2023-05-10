@@ -16,7 +16,7 @@ class ColorPapersController < ApplicationController
     # @color_paper.birthday_id = params[:color_paper][:birthday_id]
     @color_paper.save if @color_paper.new_record?
     @picture = Picture.new(color_paper_params)#ここでpictureの保存
-      redirect_to root_path#誕生日詳細ページに遷移するパスをかく
+      redirect_to edit_color_paper_path#誕生日詳細ページに遷移するパスをかく
   end
 
   def show
