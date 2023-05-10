@@ -9,8 +9,8 @@ class Picture < ApplicationRecord
   has_one_attached :image
 
   # 画像が存在しなければテキストが必要となり、画像があればテキストは不要(画像のみ)
-   def was_attached?   
-    self.image.attached?
-  end
+  #  def was_attached?   
+  #   self.image.attached?
+  # end
 end
 

@@ -1,9 +1,15 @@
 <%= form_with model: @color_paper, local: true do |f|%>
 
   <div class="field">
+    <%= f.label :title, "タイトルを入力してください" %><br />
+    <%= f.text_area :title %>
+  </div>
+
+  <div class="field">
     <%= f.label :image, "記念すべき１枚を選んで下さい" %><br />
     <%= f.file_field :image %>
   </div>
+
   <%# ここでパラメーターにbirthday_idを付与 %>
   <%= f.hidden_field :birthday_id, :value => @birthday_id %>
   <div class="actions">

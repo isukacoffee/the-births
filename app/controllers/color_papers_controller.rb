@@ -10,19 +10,13 @@ class ColorPapersController < ApplicationController
   end
 
   def create
-    @color_paper = ColorPaper.find_or_initialize_by(birthday_id: params[:color_paper][:birthday_id])
-
     #ここでcolor_paperレコードにbirthday_idを代入している
-    # @color_paper.birthday_id = params[:color_paper][:birthday_id]
-    #color_paperとimageを順番に保存する記述
-
+    @color_paper = ColorPaper.find_or_initialize_by(birthday_id: params[:color_paper][:birthday_id], user_id: current_user.id)
     
-    if @color_paper.save
-    @color_paper = Picture.new(color_paper_params)#ここでpictureの保存
-      redirect_to root_path
-    else
-      render :new
-    end
+    # @color_paper.birthday_id = params[:color_paper][:birthday_id]
+    @color_paper.save if @color_paper.new_record?
+    @picture = Picture.new(color_paper_params)#ここでpictureの保存
+      redirect_to root_path#誕生日詳細ページに遷移するパスをかく
   end
 
   def show
@@ -46,7 +40,7 @@ class ColorPapersController < ApplicationController
   private
 
   def color_paper_params
-    params.require(:color_paper).permit(:birthday_id).merge(user_id: current_user.id, birthday_id: params[:birthday_id])
+    params.require(:color_paper).permit(:image)
   end
 end
 
