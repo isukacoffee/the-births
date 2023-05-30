@@ -5,7 +5,7 @@ class ColorPaper < ApplicationRecord
 
   belongs_to :user
   belongs_to :birthday
-  has_many :pictures
+  has_one_attached :picture
   has_many :comments
 
   # 画像が存在しなければテキストが必要となり、画像があればテキストは不要(画像のみ)
