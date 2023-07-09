@@ -5,10 +5,12 @@ class BirthdaysController < ApplicationController
 
   def new
     @birthday = Birthday.new
+    # @color_paper.id = params[:color_paper_id]
   end
 
   def create
     @birthday = Birthday.new(birthday_params)
+    
     if @birthday.save
       redirect_to root_path
     else
@@ -18,6 +20,7 @@ class BirthdaysController < ApplicationController
 
   def show
     @birthday = Birthday.find(params[:id])
+    @color_paper = Birthday.find(params[:id])
   end
 
   def edit

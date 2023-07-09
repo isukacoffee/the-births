@@ -6,12 +6,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :picture, "記念すべき１枚を選んで下さい" %><br />
-    <%= f.file_field :picture, direct_upload: true %>
+    <%= f.label :image, "記念すべき１枚を選んで下さい" %><br />
+    <%= f.file_field :image, direct_upload: true %>
   </div>
 
-  <%# ここでパラメーターにbirthday_idを付与 %>
-  <%= f.hidden_field :birthday_id, :value => @birthday_id %>
+  <%= f.hidden_field :color_paper_id, :value => @color_paper_id %>
   <div class="actions">
     <%= f.submit "投稿する", class: :form__btn  %>
   </div>

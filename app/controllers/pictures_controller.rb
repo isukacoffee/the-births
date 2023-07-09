@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 
   def new
     @picture = Picture.new
+    @color_paper_id = params[:color_paper_id]
   end
 
   def create
@@ -16,6 +17,6 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:title, :image)
+    params.require(:picture).permit(:title, :image, :color_paper_id).merge(user_id: current_user.id)
   end
 end
