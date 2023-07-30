@@ -7,6 +7,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    
+    binding.pry
+    
     if @picture.save
       redirect_to root_path
     else
