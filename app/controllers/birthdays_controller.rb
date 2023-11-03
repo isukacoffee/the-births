@@ -23,7 +23,8 @@ class BirthdaysController < ApplicationController
   def show
     @birthday = Birthday.find(params[:id])
     @color_paper = @birthday.color_paper
-    @comment = Comment.find_or_initialize_by(user_id: current_user.id)
+    @comment = Comment.find_or_initialize_by(user_id: current_user.id, birthday_id: @birthday.id)
+    #どのユーザーがどの誕生日に対してしているコメント
   end
 
   def edit

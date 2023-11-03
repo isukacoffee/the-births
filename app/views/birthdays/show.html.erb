@@ -8,14 +8,19 @@
   <%=link_to 'この方の色紙編集画面はこちら', new_picture_path(color_paper_id: @color_paper.id) %>  
 
 
-<%= form_with model: @comment,url:comments_path, remote: true do |f|%>
-
+<%= form_with model: @comment, remote: true do |f|%>
+ 
   <div class="field">
     <%= f.label :sentence, "感謝の言葉を贈ってください" %><br />
     <%= f.text_area :sentence %>
   </div>
-   
+  
+  <%= f.hidden_field :birthday_id, :value => @birthday.id %> 
   <div class="actions">
     <%= f.submit "贈る", class: :form__btn  %>
   </div>
+
+
+<%=link_to '色紙閲覧ページはこちら', color_paper_path(@color_paper.id), method: :get %>
+  <%# hiddenfieldを入れてあげる（birthdayid) %>
 <% end %>

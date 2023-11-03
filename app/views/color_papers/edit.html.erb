@@ -1,0 +1,10 @@
+<%= form_with model: @color_paper, local: true do |f|%>
+<%= f.select :question, ColorPaper.questions.keys.map { |k| [t("enums.color_paper.question.#{k}"), k] }, {}, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } %>
+
+
+<%= f.hidden_field :color_paper_id, :value => @color_paper.id %> 
+<div class="actions">
+    <%= f.submit "登録する", class: :form__btn  %>
+  </div>
+
+<% end %>
